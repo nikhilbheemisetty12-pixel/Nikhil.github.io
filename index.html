@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Nikhil Bheemisetty, Power Platform Developer in Hyderabad, India.">
+<title>Nikhil Bheemisetty</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single hero with animated name, counters and a stack marquee; five menu rows open full detail in popups */
+:root{
+  --bg:#F2F5FA;
+  --surface:#FFFFFF;
+  --ink:#111A2E;
+  --muted:#58637A;
+  --line:#D8DFEB;
+  --accent:#2F5D9E;
+  --accent-soft:#E4EAF3;
+  --k-apps:#5E5A8C;
+  --k-auto:#2F5D9E;
+  --k-bi:#A8884A;
+  --k-data:#3E7C78;
+  --k-other:#7A869D;
+  --k-warm:#B5654A;
+  --k-pink:#8C5A78;
+  --font-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1322;
+    --surface:#141C30;
+    --ink:#E7ECF6;
+    --muted:#9BA6BE;
+    --line:#26314D;
+    --accent:#7FA3D9;
+    --accent-soft:#1B2840;
+    --k-apps:#A79BD1;
+    --k-auto:#7FA3D9;
+    --k-bi:#D3B572;
+    --k-data:#6FB3AB;
+    --k-other:#8E9AB3;
+  --k-warm:#D49A82;
+  --k-pink:#C09AB3;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1322;
+  --surface:#141C30;
+  --ink:#E7ECF6;
+  --muted:#9BA6BE;
+  --line:#26314D;
+  --accent:#7FA3D9;
+  --accent-soft:#1B2840;
+  --k-apps:#A79BD1;
+  --k-auto:#7FA3D9;
+  --k-bi:#D3B572;
+  --k-data:#6FB3AB;
+  --k-other:#8E9AB3;
+  --k-warm:#D49A82;
+  --k-pink:#C09AB3;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html.lock{overflow:hidden}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  padding-block:0 40px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.wrap{max-width:980px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.1}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit}
+button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;isolation:isolate;padding-block:56px 28px;display:grid;gap:20px}
+.hero::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:420px;z-index:-1;
+  background-image:radial-gradient(var(--line) 1.4px,transparent 1.6px);
+  background-size:28px 28px;
+  -webkit-mask-image:radial-gradient(ellipse at 30% 30%,#000 10%,transparent 70%);
+  mask-image:radial-gradient(ellipse at 30% 30%,#000 10%,transparent 70%);
+  animation:drift 14s linear infinite;
+}
+@keyframes drift{to{background-position:28px 28px}}
+
+.hero h1{font-size:clamp(46px,10vw,104px);font-weight:800;letter-spacing:-.035em;display:flex;flex-wrap:wrap;gap:0 .28em}
+.hero h1 .w{display:inline-block;animation:slideup .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .w:nth-child(2){
+  animation:slideup .9s .12s cubic-bezier(.2,.8,.2,1) both,shine 6s linear infinite;
+  background:linear-gradient(90deg,var(--k-auto),var(--k-data),var(--k-auto));
+  background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-bottom:.06em;
+}
+@keyframes shine{to{background-position:200% 0}}
+@keyframes slideup{from{transform:translateY(34px)}to{transform:none}}
+
+.eyebrow{display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--k-data);animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--k-data) 55%,transparent)}100%{box-shadow:0 0 0 12px transparent}}
+
+.build{font-family:var(--font-display);font-size:clamp(20px,3.4vw,30px);font-weight:500;color:var(--muted)}
+.rot{display:inline-block;color:var(--rc,var(--k-apps));font-weight:700;animation:swap .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes swap{from{transform:translateY(60%);opacity:0}to{transform:none;opacity:1}}
+
+.lead{max-width:60ch;font-size:clamp(16px,2.2vw,19px);animation:fade .8s .25s both}
+.lead b{font-weight:600;color:var(--accent)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.facts{display:flex;flex-wrap:wrap;gap:12px 40px;margin:6px 0 0;padding-top:18px;border-top:1px solid var(--line);animation:fade .8s .4s both}
+.facts div{display:grid;gap:2px}
+.facts dt{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.facts dd{margin:0;font-size:13px;color:var(--muted)}
+.facts div:nth-child(1) dt{color:var(--k-apps)}
+.facts div:nth-child(2) dt{color:var(--k-auto)}
+.facts div:nth-child(3) dt{color:var(--k-data)}
+.facts div:nth-child(4) dt{color:var(--k-warm)}
+
+/* ---------- menu ---------- */
+.menu{margin-top:18px;border-top:2px solid var(--ink)}
+.menu-row{
+  width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto 28px;align-items:center;gap:6px 20px;
+  background:transparent;border:0;border-bottom:1px solid var(--line);padding:20px 4px 20px 16px;text-align:left;cursor:pointer;
+  position:relative;transition:background-color .2s ease,padding-left .25s ease;
+  animation:fade .7s both;
+}
+.menu-row:nth-child(1){animation-delay:.5s}
+.menu-row:nth-child(2){animation-delay:.6s}
+.menu-row:nth-child(3){animation-delay:.7s}
+.menu-row:nth-child(4){animation-delay:.8s}
+.menu-row:nth-child(5){animation-delay:.9s}
+.menu-row:nth-child(6){animation-delay:1s}
+.menu-row:nth-child(1){--c:var(--k-warm)}
+.menu-row:nth-child(2){--c:var(--k-apps)}
+.menu-row:nth-child(3){--c:var(--k-auto)}
+.menu-row:nth-child(4){--c:var(--k-data)}
+.menu-row:nth-child(5){--c:var(--k-bi)}
+.menu-row:nth-child(6){--c:var(--k-pink)}
+.menu-row::before{content:"";position:absolute;left:0;top:14%;bottom:14%;width:4px;border-radius:2px;background:var(--c,var(--accent));transform:scaleY(.4);transition:transform .25s ease}
+.menu-row:hover,.menu-row:focus-visible{background:color-mix(in srgb,var(--c,var(--accent)) 14%,transparent);padding-left:28px}
+.menu-row:hover::before,.menu-row:focus-visible::before{transform:scaleY(1)}
+.mr-title{font-family:var(--font-display);font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-.02em}
+.mr-note{font-size:14px;color:var(--muted);text-align:right}
+.mr-arrow{font-family:var(--font-mono);font-size:22px;color:var(--c,var(--accent));transition:transform .25s ease}
+.menu-row:hover .mr-arrow{transform:translateX(6px)}
+@media (max-width:620px){
+  .menu-row{grid-template-columns:minmax(0,1fr) 28px}
+  .mr-note{grid-column:1;grid-row:2;text-align:left}
+  .mr-arrow{grid-column:2;grid-row:1/3}
+}
+
+/* ---------- marquee ---------- */
+.marquee{margin-top:30px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:10px;width:max-content}
+.track.run{animation:scroll 38s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(calc(-50% - 5px))}}
+
+.chip{font-size:13px;padding:4px 12px;border:1px solid color-mix(in srgb,var(--ck,var(--k-other)) 38%,var(--line));border-radius:99px;background:color-mix(in srgb,var(--ck,var(--k-other)) 12%,var(--surface));display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ck,var(--k-other))}
+.chip[data-k="apps"]{--ck:var(--k-apps)}
+.chip[data-k="auto"]{--ck:var(--k-auto)}
+.chip[data-k="bi"]{--ck:var(--k-bi)}
+.chip[data-k="data"]{--ck:var(--k-data)}
+
+footer{margin-top:36px;font-size:13px;color:var(--muted)}
+
+/* ---------- popups ---------- */
+.dlg{
+  width:min(820px,calc(100% - 24px));max-height:min(88vh,860px);padding:0;border:1px solid var(--line);border-radius:12px;
+  background:var(--surface);color:var(--ink);overflow:auto;margin:auto;
+  box-shadow:0 30px 80px -20px rgba(8,14,30,.45);
+}
+.dlg[open]{animation:pop .35s cubic-bezier(.2,.9,.25,1)}
+.dlg[open]::backdrop{background:rgba(9,14,28,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:bd .3s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bd{from{opacity:0}to{opacity:1}}
+.dlg-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;background:var(--surface);border-bottom:1px solid var(--line)}
+.dlg-head h2{font-size:clamp(22px,4vw,30px);font-weight:700;letter-spacing:-.02em}
+.x{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 14px;font-size:14px;cursor:pointer;transition:border-color .15s,color .15s}
+.x:hover{border-color:var(--accent);color:var(--accent)}
+.dlg-body{padding:8px 24px 28px}
+.dlg-head::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--k-auto),var(--k-data),var(--k-auto));background-size:200% 100%;animation:flow 5s linear infinite}
+@keyframes flow{to{background-position:200% 0}}
+.dlg-body>*{animation:rise .45s both}
+.dlg-body>*:nth-child(1){animation-delay:.05s}
+.dlg-body>*:nth-child(2){animation-delay:.12s}
+.dlg-body>*:nth-child(3){animation-delay:.19s}
+.dlg-body>*:nth-child(4){animation-delay:.26s}
+.dlg-body>*:nth-child(5){animation-delay:.33s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* about */
+.about{padding-top:20px;display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:18px 36px}
+.about>p{grid-column:2}
+.about>.photo{grid-column:1;grid-row:1/4}
+.about>.focus,.about>.quick{grid-column:1/-1}
+@media (max-width:660px){
+  .about{grid-template-columns:minmax(0,1fr)}
+  .about>p,.about>.photo{grid-column:1}
+  .about>.photo{grid-row:auto;margin-bottom:12px}
+}
+.about .big{font-family:var(--font-display);font-size:clamp(22px,3.6vw,30px);font-weight:600;line-height:1.25;letter-spacing:-.01em;max-width:30ch}
+.about .big b{color:var(--accent);font-weight:700}
+.about p{font-size:16px;max-width:64ch}
+.focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 24px;margin-top:6px;border-top:2px solid var(--ink)}
+.focus div{padding-block:14px;border-bottom:1px solid var(--line)}
+.focus h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.focus p{font-size:14px;color:var(--muted)}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px 24px;margin:6px 0 0}
+.quick div{display:grid;gap:2px}
+.quick dt{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.quick dd{margin:0;font-size:15px}
+
+/* hero color blobs */
+.blobs{position:absolute;inset:0 0 auto 0;height:520px;z-index:-1;overflow:hidden;pointer-events:none}
+.blobs i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.14;animation:float 14s ease-in-out infinite}
+.blobs i:nth-child(1){width:280px;height:280px;left:-60px;top:20px;background:var(--k-apps)}
+.blobs i:nth-child(2){width:300px;height:300px;left:34%;top:-90px;background:var(--k-auto);animation-delay:-4s}
+.blobs i:nth-child(3){width:260px;height:260px;right:-50px;top:70px;background:var(--k-data);animation-delay:-8s}
+.blobs i:nth-child(4){width:220px;height:220px;left:52%;top:250px;background:var(--k-warm);animation-delay:-11s}
+.blobs i:nth-child(5){width:180px;height:180px;left:10%;top:300px;background:var(--k-bi);animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.12)}66%{transform:translate(-30px,30px) scale(.94)}}
+
+/* photo frame */
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes spin{to{--ang:360deg}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.photo{position:relative;margin:0;width:100%;max-width:250px;aspect-ratio:4/5;justify-self:center;align-self:start}
+.photo .ring{position:absolute;inset:-6px;border-radius:24px;background:conic-gradient(from var(--ang),var(--k-auto),var(--k-data),var(--k-apps),var(--k-auto));animation:spin 5s linear infinite;box-shadow:0 14px 40px -12px color-mix(in srgb,var(--k-auto) 60%,transparent)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:18px;border:4px solid var(--surface);display:block;cursor:pointer}
+.badge{position:absolute;padding:4px 12px;border-radius:99px;font-size:12.5px;font-weight:600;color:#fff;background:var(--c);box-shadow:0 6px 16px -6px rgba(0,0,0,.45);animation:bob 4s ease-in-out infinite}
+.badge.b1{--c:var(--k-apps);top:-14px;right:6px}
+.badge.b2{--c:var(--k-data);left:6px;bottom:-14px;animation-delay:-1.3s}
+.badge.b3{--c:var(--k-bi);color:#1a1a1a;right:6px;bottom:44px;animation-delay:-2.6s}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .badge{color:#101626}}
+:root[data-theme="dark"] .badge{color:#101626}
+
+/* experience */
+.role{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:8px 32px;padding-block:24px;border-bottom:1px solid var(--line)}
+.role:last-child{border-bottom:0}
+.role h3{font-size:21px;font-weight:700}
+.where{display:grid;gap:4px;align-content:start}
+.where span{font-size:14px;color:var(--muted)}
+.dlg ul.b{display:grid;gap:10px}
+.dlg ul.b li{position:relative;padding-left:18px;font-size:15px}
+.dlg ul.b li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--accent)}
+.hl{background:var(--accent-soft);padding:1px 5px;border-radius:3px;font-weight:600}
+@media (max-width:660px){.role{grid-template-columns:minmax(0,1fr)}}
+
+/* projects accordion */
+details.proj{border-bottom:1px solid var(--line)}
+details.proj:last-child{border-bottom:0}
+details.proj summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 20px;gap:4px 16px;align-items:center;padding-block:18px}
+details.proj summary::-webkit-details-marker{display:none}
+details.proj summary h3{font-size:20px;font-weight:700}
+details.proj summary .mono{grid-column:1}
+details.proj summary::after{content:"";grid-column:2;grid-row:1/3;width:9px;height:9px;border-right:2px solid var(--c,var(--accent));border-bottom:2px solid var(--c,var(--accent));transform:rotate(45deg);transition:transform .25s ease;justify-self:center;margin-top:-4px}
+details.proj[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+details.proj .inner{padding-bottom:22px;display:grid;gap:14px;animation:rise .35s both}
+details.proj .sum{font-size:15px;color:var(--muted);max-width:64ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+details.proj{--c:var(--k-auto);border-left:4px solid var(--c);padding-left:16px;margin-bottom:6px;border-radius:2px;transition:background-color .25s ease}
+details.proj:nth-of-type(1){--c:var(--k-auto)}
+details.proj:nth-of-type(2){--c:var(--k-warm)}
+details.proj:nth-of-type(3){--c:var(--k-apps)}
+details.proj:nth-of-type(4){--c:var(--k-data)}
+details.proj[open]{background:color-mix(in srgb,var(--c) 7%,transparent)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:4px 24px;padding-top:16px}
+.skills div{padding-block:12px;border-bottom:1px solid var(--line);min-width:0}
+.skills h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.skills li{font-size:15px;padding-block:3px}
+.skills .fx{font-family:var(--font-mono);font-size:13px}
+.skills div{border-top:3px solid var(--c,var(--accent))}
+.skills div:nth-child(1){--c:var(--k-apps)}
+.skills div:nth-child(2){--c:var(--k-auto)}
+.skills div:nth-child(3){--c:var(--k-data)}
+.skills div:nth-child(4){--c:var(--k-warm)}
+.skills h3::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;background:var(--c,var(--accent))}
+.skills li{transition:transform .2s ease,color .2s ease}
+.skills li:hover{transform:translateX(6px);color:var(--c)}
+
+/* credentials */
+.certs{margin-top:8px}
+.cert{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;align-items:baseline;padding-block:14px;border-bottom:1px solid var(--line)}
+.cert code{font-family:var(--font-mono);font-weight:500;font-size:15px;color:var(--accent)}
+.edu{padding-top:22px;display:grid;gap:4px}
+.edu strong{font-family:var(--font-display);font-size:20px}
+.edu span{color:var(--muted);font-size:15px}
+
+/* contact */
+.row{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:12px;align-items:center;padding-block:16px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .val{font-size:17px;overflow-wrap:anywhere;user-select:all}
+.row button.cp{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;min-width:78px;transition:border-color .15s,color .15s}
+.row button.cp:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:480px){.row{grid-template-columns:minmax(0,1fr) auto}.row .mono{grid-column:1/-1}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="hero">
+    <div class="blobs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="mono eyebrow">Power Platform Developer · Senior Software Engineer · Hyderabad, India</p>
+    <h1 aria-label="Nikhil Bheemisetty"><span class="w">Nikhil</span><span class="w">Bheemisetty</span></h1>
+    <p class="build">I build secure business apps with <span class="rot" id="rot">Power Apps</span></p>
+    <p class="lead">Approval, procurement, spend management and inventory solutions for finance and business teams. At Ecolab I cut purchase request cycle time by <b>30%</b> by replacing manual steps with automated workflows.</p>
+
+    <dl class="facts">
+      <div><dt data-to="5" data-suffix="+">5+</dt><dd>years on Power Platform</dd></div>
+      <div><dt data-to="4" data-suffix="">4</dt><dd>business solutions delivered</dd></div>
+      <div><dt data-to="3" data-suffix="">3</dt><dd>Microsoft certifications</dd></div>
+      <div><dt data-to="30" data-suffix="%">30%</dt><dd>shorter purchase request cycle</dd></div>
+    </dl>
+
+    <nav class="menu" aria-label="Portfolio sections">
+      <button type="button" class="menu-row" data-open="dlg-about"><span class="mr-title">About me</span><span class="mr-note">Who I am and what I build</span><span class="mr-arrow" aria-hidden="true">→</span></button>
+      <button type="button" class="menu-row" data-open="dlg-work"><span class="mr-title">Experience</span><span class="mr-note">Ecolab · Value Momentum</span><span class="mr-arrow" aria-hidden="true">→</span></button>
+      <button type="button" class="menu-row" data-open="dlg-proj"><span class="mr-title">Projects</span><span class="mr-note">4 solutions, spend to inventory</span><span class="mr-arrow" aria-hidden="true">→</span></button>
+      <button type="button" class="menu-row" data-open="dlg-skills"><span class="mr-title">Skills</span><span class="mr-note">Apps, automation, data, security</span><span class="mr-arrow" aria-hidden="true">→</span></button>
+      <button type="button" class="menu-row" data-open="dlg-cred"><span class="mr-title">Certifications</span><span class="mr-note">PL-400 · PL-100 · PL-900</span><span class="mr-arrow" aria-hidden="true">→</span></button>
+      <button type="button" class="menu-row" data-open="dlg-contact"><span class="mr-title">Contact</span><span class="mr-note">Email, phone, location</span><span class="mr-arrow" aria-hidden="true">→</span></button>
+    </nav>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="track" id="track">
+        <span class="chip" data-k="apps">Power Apps</span>
+        <span class="chip" data-k="auto">Power Automate</span>
+        <span class="chip" data-k="data">Dataverse</span>
+        <span class="chip" data-k="bi">Power BI</span>
+        <span class="chip" data-k="data">SharePoint Online</span>
+        <span class="chip" data-k="apps">Power Fx</span>
+        <span class="chip" data-k="auto">AI Builder</span>
+        <span class="chip">SQL</span>
+        <span class="chip">Microsoft Teams</span>
+        <span class="chip">Plug-ins</span>
+        <span class="chip">XrmToolBox</span>
+        <span class="chip">Power Pipelines</span>
+        <span class="chip">Role-based access</span>
+      </div>
+    </div>
+  </header>
+  <footer>Nikhil Bheemisetty · Power Platform Developer</footer>
+</div>
+
+<!-- About -->
+<dialog class="dlg" id="dlg-about" aria-labelledby="t-about">
+  <div class="dlg-head"><h2 id="t-about">About me</h2><button type="button" class="x" data-close>Close</button></div>
+  <div class="dlg-body">
+    <div class="about">
+      <figure class="photo">
+        <span class="ring"></span>
+        <img src="photo.jpg" alt="Profile photo" width="640" height="800">
+        <span class="badge b1">Power Apps</span>
+        <span class="badge b2">Dataverse</span>
+        <span class="badge b3">Power BI</span>
+      </figure>
+      <p class="big">I turn slow, manual business processes into <b>secure, automated apps</b>.</p>
+      <p>I'm a Power Platform developer with more than five years of experience building business applications with Power Apps, Power Automate, Dataverse, SharePoint Online and Power BI. My work sits where finance and operations teams need speed, visibility and control.</p>
+      <p>I've delivered spend management, procurement, finance approval and inventory solutions, with multi-level approval workflows, Power BI dashboards, plug-ins, role-based security and smooth moves between environments. At Ecolab, automating purchase requests cut their cycle time by 30%.</p>
+
+      <div class="focus">
+        <div><h3>Business apps</h3><p>Responsive Canvas and Model-driven apps built from real requirements.</p></div>
+        <div><h3>Approval automation</h3><p>Multi-level flows with Teams tracking, reminders, escalations and error handling.</p></div>
+        <div><h3>Data and insight</h3><p>Dataverse design and Power BI dashboards for live spend and KPI views.</p></div>
+        <div><h3>Secure delivery</h3><p>Role-based access, plug-ins, testing, UAT support and environment migration.</p></div>
+      </div>
+
+      <dl class="quick">
+        <div><dt>Currently</dt><dd>Senior Software Engineer, Ecolab</dd></div>
+        <div><dt>Based in</dt><dd>Hyderabad, India</dd></div>
+        <div><dt>Certified</dt><dd>PL-400, PL-100, PL-900</dd></div>
+        <div><dt>Education</dt><dd>B.Sc. Computer Science, Osmania University</dd></div>
+      </dl>
+    </div>
+  </div>
+</dialog>
+
+<!-- Experience -->
+<dialog class="dlg" id="dlg-work" aria-labelledby="t-work">
+  <div class="dlg-head"><h2 id="t-work">Experience</h2><button type="button" class="x" data-close>Close</button></div>
+  <div class="dlg-body">
+    <article class="role">
+      <div class="where"><h3>Ecolab</h3><span>Senior Software Engineer</span><span class="mono">Feb 2023 – Present</span></div>
+      <ul class="b">
+        <li>Design and deliver responsive Canvas and Model-driven apps for spend management and procurement, with real-time data from Dataverse, SharePoint Online and SQL.</li>
+        <li>Analyze requirements, run impact analysis and design Dataverse tables, relationships and schemas. Import raw Excel data into Dataverse through Power Automate flows.</li>
+        <li>Automate multi-level approvals with Teams approval tracking, notifications, reminders, escalations and error handling.</li>
+        <li>Build Power BI dashboards for procurement analytics, request tracking and KPI reporting, giving finance real-time spend visibility.</li>
+        <li><span class="hl">Reduced purchase request cycle time by 30%</span> by replacing manual steps with automated workflows.</li>
+        <li>Write business logic in Power Fx and tune apps and flows for large data volumes and multiple data sources.</li>
+        <li>Build cloud and desktop flows with Power Automate Desktop and AI Builder to automate enterprise processes.</li>
+        <li>Develop and register Dataverse plug-ins, enforce role-based access, data integrity and security, and support unit testing, UAT and ongoing business needs.</li>
+      </ul>
+    </article>
+    <article class="role">
+      <div class="where"><h3>Value Momentum</h3><span>Power Apps Developer</span><span class="mono">Jul 2021 – Feb 2023</span></div>
+      <ul class="b">
+        <li>Developed Canvas apps from scratch and Model-driven apps on SharePoint Online for finance report approval and inventory management, with custom forms and reusable Canvas components.</li>
+        <li>Created SharePoint columns, views and content types and designed data structures and the inventory database schema around end-user needs.</li>
+        <li>Configured approval workflows for finance reports with manager routing, automatic status updates and real-time notifications, replacing manual and email-based processes.</li>
+        <li>Built flows for PDF printing, Excel upload to the main list, CSV printing and invoice generation, including instant and scheduled flows.</li>
+        <li>Managed user group permissions and role-based access, and supported data integrity, backup and recovery planning.</li>
+        <li>Moved solutions across environments with Power Pipelines, used XrmToolBox and the Plug-in Registration Tool, and wrote architecture designs and test plans before release.</li>
+      </ul>
+    </article>
+  </div>
+</dialog>
+
+<!-- Projects -->
+<dialog class="dlg" id="dlg-proj" aria-labelledby="t-proj">
+  <div class="dlg-head"><h2 id="t-proj">Projects</h2><button type="button" class="x" data-close>Close</button></div>
+  <div class="dlg-body">
+    <details class="proj" open>
+      <summary><h3>Spend Management Application</h3><span class="mono">Ecolab · Canvas app, approvals, Dataverse</span></summary>
+      <div class="inner">
+        <p class="sum">An enterprise app to track, control and forecast spend in a structured, transparent way. Users submit requests, managers approve forecasts through automated workflows, and finance watches spending in real time.</p>
+        <div class="chips"><span class="chip" data-k="apps">Power Apps (Canvas)</span><span class="chip" data-k="auto">Power Automate</span><span class="chip" data-k="data">Dataverse</span><span class="chip" data-k="data">SharePoint Online</span><span class="chip">Microsoft Teams</span></div>
+        <ul class="b">
+          <li>Analyzed client requirements, ran impact analysis and delivered a fully responsive Canvas app with real-time data access.</li>
+          <li>Designed Dataverse tables and relationships and imported raw Excel data using Power Automate flows.</li>
+          <li>Automated approvals with Teams-based tracking, error handling and performance tuning.</li>
+          <li>Handled coding, customization, unit testing and ongoing business support.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="proj">
+      <summary><h3>Procurement and Approval Automation Portal</h3><span class="mono">Purchase requests, multi-level approvals, Power BI</span></summary>
+      <div class="inner">
+        <p class="sum">A business application for purchase requests, approval workflows and procurement tracking, with Power BI dashboards for analytics and KPI reporting.</p>
+        <div class="chips"><span class="chip" data-k="apps">Power Apps</span><span class="chip" data-k="auto">Power Automate</span><span class="chip" data-k="data">SharePoint Online</span><span class="chip" data-k="bi">Power BI</span></div>
+        <ul class="b">
+          <li>Automated multi-level approvals with notifications, reminders and escalations.</li>
+          <li>Used SharePoint Online for document management and procurement information.</li>
+          <li>Built Power BI dashboards for procurement analytics, request tracking and KPI reporting.</li>
+          <li><span class="hl">Cut purchase request cycle time by 30%</span> through workflow automation.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="proj">
+      <summary><h3>Finance Report Approval</h3><span class="mono">Value Momentum · Canvas forms, SharePoint, Forms</span></summary>
+      <div class="inner">
+        <p class="sum">A solution that digitizes finance report submission and approval. Reports go through custom Canvas forms into SharePoint lists, then route to managers with real-time status notifications.</p>
+        <div class="chips"><span class="chip" data-k="apps">Power Apps (Canvas)</span><span class="chip" data-k="data">SharePoint</span><span class="chip" data-k="auto">Power Automate</span><span class="chip">Microsoft Forms</span></div>
+        <ul class="b">
+          <li>Automated report routing, manager approvals, notifications and status updates.</li>
+          <li>Set up role-based access control and user permissions for secure use.</li>
+          <li>Created instant and scheduled flows, connected Microsoft Forms to SharePoint and handled app export and import across environments.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="proj">
+      <summary><h3>Inventory Management</h3><span class="mono">Value Momentum · Stock, orders, invoices</span></summary>
+      <div class="inner">
+        <p class="sum">A solution for tracking, ordering and managing goods, covering product tracking, order processing and stock level monitoring, with real-time insight into inventory status.</p>
+        <div class="chips"><span class="chip" data-k="apps">Power Apps (Canvas)</span><span class="chip" data-k="auto">Power Automate</span><span class="chip" data-k="data">SharePoint Online</span><span class="chip" data-k="data">Dataverse</span></div>
+        <ul class="b">
+          <li>Built the Canvas apps from scratch and created SharePoint columns, views and content types.</li>
+          <li>Wrote flows for PDF printing, approvals, Excel upload into the main list, CSV printing and invoice generation.</li>
+          <li>Designed and maintained the inventory database schema, with data integrity, security, performance tuning and backup and recovery planning.</li>
+          <li>Registered plug-ins with the Plug-in Registration Tool, used XrmToolBox, and ran test plans and UAT fixes.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</dialog>
+
+<!-- Skills -->
+<dialog class="dlg" id="dlg-skills" aria-labelledby="t-skills">
+  <div class="dlg-head"><h2 id="t-skills">Skills</h2><button type="button" class="x" data-close>Close</button></div>
+  <div class="dlg-body">
+    <div class="skills">
+      <div><h3>Apps</h3><ul><li>Power Apps, Canvas and Model-driven</li><li class="fx">Power Fx</li><li>Reusable Canvas components</li><li>HTML (basics)</li></ul></div>
+      <div><h3>Automation</h3><ul><li>Power Automate, Cloud and Desktop</li><li>AI Builder</li><li>Teams approvals and Forms</li><li>Copilot Studio (basics)</li></ul></div>
+      <div><h3>Data and reporting</h3><ul><li>Dataverse</li><li>SharePoint Online</li><li>SQL</li><li>Power BI</li></ul></div>
+      <div><h3>Platform and security</h3><ul><li>Plug-ins, XrmToolBox</li><li>Power Pipelines, environment migration</li><li>Role-based access control</li><li>Unit testing and UAT support</li></ul></div>
+    </div>
+  </div>
+</dialog>
+
+<!-- Certifications and education -->
+<dialog class="dlg" id="dlg-cred" aria-labelledby="t-cred">
+  <div class="dlg-head"><h2 id="t-cred">Certifications</h2><button type="button" class="x" data-close>Close</button></div>
+  <div class="dlg-body">
+    <div class="certs">
+      <div class="cert"><code>PL-400</code><span>Power Platform Developer Associate</span></div>
+      <div class="cert"><code>PL-100</code><span>Power Platform App Maker Associate</span></div>
+      <div class="cert"><code>PL-900</code><span>Power Platform Fundamentals</span></div>
+    </div>
+    <div class="edu">
+      <span class="mono">Education</span>
+      <strong>B.Sc. Computer Science</strong>
+      <span>Osmania University</span>
+      <span class="mono">2018 – 2021</span>
+    </div>
+  </div>
+</dialog>
+
+<!-- Contact -->
+<dialog class="dlg" id="dlg-contact" aria-labelledby="t-contact">
+  <div class="dlg-head"><h2 id="t-contact">Contact</h2><button type="button" class="x" data-close>Close</button></div>
+  <div class="dlg-body">
+    <div>
+      <div class="row"><span class="mono">Email</span><span class="val" id="v-email">nikhilbheemisetty12@gmail.com</span><button type="button" class="cp" data-copy="nikhilbheemisetty12@gmail.com" data-target="v-email">Copy</button></div>
+      <div class="row"><span class="mono">Phone</span><span class="val" id="v-phone">+91 9603063931</span><button type="button" class="cp" data-copy="+91 9603063931" data-target="v-phone">Copy</button></div>
+      <div class="row"><span class="mono">Based in</span><span class="val">Hyderabad, India</span><span></span></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* colorful burst from the photo */
+  function burst(box){
+    if (reduce || !box || !box.animate) return;
+    var cs = ['--k-apps','--k-auto','--k-data','--k-bi','--k-warm','--k-pink'];
+    for (var n = 0; n < 18; n++){
+      var s = document.createElement('span'), a = Math.random() * Math.PI * 2, dist = 70 + Math.random() * 90;
+      s.style.cssText = 'position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4px 0 0 -4px;border-radius:50%;pointer-events:none;z-index:5;background:var(' + cs[n % 6] + ')';
+      box.appendChild(s);
+      (function(s, a, dist){
+        s.animate([
+          {transform:'translate(0,0) scale(1)', opacity:1},
+          {transform:'translate(' + Math.cos(a) * dist + 'px,' + Math.sin(a) * dist + 'px) scale(.2)', opacity:0}
+        ], {duration: 800 + Math.random() * 300, easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish = function(){ s.remove(); };
+      })(s, a, dist);
+    }
+  }
+  var photo = document.querySelector('.photo');
+  if (photo) photo.addEventListener('click', function(){ burst(photo); });
+
+  /* popups */
+  var root = document.documentElement;
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var d = document.getElementById(b.dataset.open);
+      if (d && d.showModal) { d.showModal(); root.classList.add('lock'); d.scrollTop = 0; }
+      if (b.dataset.open === 'dlg-about') setTimeout(function(){ burst(document.querySelector('.photo')); }, 600);
+    });
+  });
+  document.querySelectorAll('dialog').forEach(function(d){
+    d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
+    d.addEventListener('close', function(){ root.classList.remove('lock'); });
+  });
+  document.querySelectorAll('[data-close]').forEach(function(b){
+    b.addEventListener('click', function(){ b.closest('dialog').close(); });
+  });
+
+  /* copy buttons */
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', async function(){
+      var ok = false;
+      try { await navigator.clipboard.writeText(b.dataset.copy); ok = true; }
+      catch(e){
+        var el = document.getElementById(b.dataset.target);
+        if (el) { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      }
+      b.textContent = ok ? 'Copied' : 'Selected';
+      setTimeout(function(){ b.textContent = 'Copy'; }, 1600);
+    });
+  });
+
+  /* marquee chip colors */
+  var pal = ['--k-apps','--k-auto','--k-data','--k-bi','--k-warm','--k-pink'];
+  Array.prototype.forEach.call(document.getElementById('track').children, function(c, n){
+    c.style.setProperty('--ck', 'var(' + pal[n % 6] + ')');
+  });
+
+  if (reduce) return;
+
+  /* rotating product word */
+  var words = ['Power Apps','Power Automate','Dataverse','Power BI','SharePoint Online'];
+  var rot = document.getElementById('rot'), i = 0;
+  var cols = ['--k-apps','--k-auto','--k-data','--k-warm','--k-auto'];
+  setInterval(function(){
+    i = (i + 1) % words.length;
+    rot.textContent = words[i];
+    rot.style.setProperty('--rc', 'var(' + cols[i] + ')');
+    rot.style.animation = 'none'; void rot.offsetWidth; rot.style.animation = '';
+  }, 2400);
+
+  /* count-up numbers */
+  document.querySelectorAll('[data-to]').forEach(function(el){
+    var to = +el.dataset.to, suf = el.dataset.suffix || '', t0 = null;
+    el.textContent = '0' + suf;
+    function step(t){
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / 1400, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    setTimeout(function(){ requestAnimationFrame(step); }, 400);
+  });
+
+  /* stack marquee */
+  var track = document.getElementById('track');
+  Array.prototype.slice.call(track.children).forEach(function(c){ track.appendChild(c.cloneNode(true)); });
+  track.classList.add('run');
+})();
+</script>
+
+</body>
+</html>
