@@ -6,7 +6,7 @@
 <meta name="description" content="Portfolio of Nikhil Bheemisetty, Power Platform Developer in Hyderabad, India.">
 <title>Nikhil Bheemisetty</title>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Telugu:wght@600&family=Noto+Sans+Devanagari:wght@600&display=swap">
 <style>
 /* Layout: a single hero with animated name, counters and a stack marquee; five menu rows open full detail in popups */
 :root{
@@ -77,7 +77,7 @@ body{
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
 }
-.wrap{max-width:980px;margin:0 auto}
+.wrap{max-width:1360px;margin:0 auto}
 h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.1}
 p{margin:0}
 ul,ol{margin:0;padding:0;list-style:none}
@@ -85,8 +85,38 @@ button{font:inherit;color:inherit}
 button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
+/* ---------- welcome screen ---------- */
+.welcome{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px max(16px,env(safe-area-inset-left,0px));background:var(--bg);overflow:auto;transition:opacity .6s ease,transform .6s ease,visibility .6s}
+.welcome::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--line) 1.4px,transparent 1.6px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse at 50% 42%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 42%,#000 10%,transparent 70%);animation:drift 14s linear infinite}
+.welcome.out{opacity:0;transform:scale(1.04);visibility:hidden;pointer-events:none}
+.w-inner{position:relative;display:grid;justify-items:center;gap:16px;text-align:center;max-width:560px;margin:auto}
+.w-inner>*{animation:rise .8s both}
+.w-inner>*:nth-child(1){animation-delay:.1s}
+.w-inner>*:nth-child(2){animation-delay:.3s}
+.w-inner>*:nth-child(3){animation-delay:.5s}
+.w-inner>*:nth-child(4){animation-delay:.7s}
+.w-inner>*:nth-child(5){animation-delay:.9s}
+.w-inner>*:nth-child(6){animation-delay:1.1s}
+.w-photo{position:relative;width:132px;height:132px}
+.w-photo .ring{position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(from var(--ang),var(--k-auto),var(--k-data),var(--k-apps),var(--k-auto));animation:spin 5s linear infinite}
+.w-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:50%;border:4px solid var(--bg);display:block}
+.w-hello{font-family:var(--font-display),"Noto Sans Telugu","Noto Sans Devanagari",sans-serif;font-size:clamp(20px,4vw,26px);font-weight:600;color:var(--accent);min-height:1.5em}
+.w-hello span{display:inline-block;animation:swap .5s both}
+.w-name{font-family:var(--font-display);font-size:clamp(38px,9vw,70px);font-weight:800;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
+.w-role{color:var(--muted);font-size:clamp(15px,2.4vw,18px);max-width:38ch}
+.w-btn{display:inline-flex;align-items:center;gap:10px;margin-top:6px;padding:13px 26px;border:0;border-radius:999px;background:var(--accent);color:var(--bg);font-weight:600;font-size:16px;cursor:pointer;animation:rise .8s .9s both,ping 2.4s 1.8s ease-out infinite}
+.w-btn span{transition:transform .25s ease}
+.w-btn:hover span{transform:translateX(5px)}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent)}100%{box-shadow:0 0 0 16px transparent}}
+
 /* ---------- hero ---------- */
 .hero{position:relative;isolation:isolate;padding-block:56px 28px;display:grid;gap:20px}
+@media (min-width:1024px){
+  .hero{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:72px;padding-block:72px 40px;align-items:start}
+  .hero>*{grid-column:1}
+  .hero>.menu{grid-column:2;grid-row:1/6;margin-top:0;align-self:center}
+  .hero>.marquee{grid-column:1/-1}
+}
 .hero::before{
   content:"";position:absolute;inset:0 0 auto 0;height:420px;z-index:-1;
   background-image:radial-gradient(var(--line) 1.4px,transparent 1.6px);
@@ -179,7 +209,7 @@ footer{margin-top:36px;font-size:13px;color:var(--muted)}
 
 /* ---------- popups ---------- */
 .dlg{
-  width:min(820px,calc(100% - 24px));max-height:min(88vh,860px);padding:0;border:1px solid var(--line);border-radius:12px;
+  width:min(980px,calc(100% - 24px));max-height:min(88vh,860px);padding:0;border:1px solid var(--line);border-radius:12px;
   background:var(--surface);color:var(--ink);overflow:auto;margin:auto;
   box-shadow:0 30px 80px -20px rgba(8,14,30,.45);
 }
@@ -318,6 +348,18 @@ details.proj[open]{background:color-mix(in srgb,var(--c) 7%,transparent)}
 </head>
 <body>
 
+
+<noscript><style>.welcome{display:none}</style></noscript>
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-label="Welcome">
+  <div class="w-inner">
+    <div class="w-photo"><span class="ring"></span><img src="photo.jpg" alt="Profile photo" width="132" height="132"></div>
+    <p class="w-hello" id="w-hello"><span>Hello</span></p>
+    <p class="w-name">I'm Nikhil Bheemisetty</p>
+    <p class="w-role">Power Platform developer. Welcome to my portfolio.</p>
+    <button type="button" class="w-btn" id="w-enter">View my portfolio <span aria-hidden="true">→</span></button>
+    <p class="mono">Hyderabad, India</p>
+  </div>
+</div>
 
 <div class="wrap">
   <header class="hero">
@@ -532,6 +574,27 @@ details.proj[open]{background:color-mix(in srgb,var(--c) 7%,transparent)}
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* welcome screen */
+  var wel = document.getElementById('welcome');
+  if (wel){
+    document.documentElement.classList.add('lock');
+    var enter = document.getElementById('w-enter');
+    enter.focus({preventScroll:true});
+    enter.addEventListener('click', function(){
+      wel.classList.add('out');
+      document.documentElement.classList.remove('lock');
+      setTimeout(function(){ wel.style.display = 'none'; }, reduce ? 0 : 700);
+    });
+    if (!reduce){
+      var hs = ['Hello','నమస్కారం','नमस्ते','Welcome'], hi = 0, hel = document.getElementById('w-hello');
+      setInterval(function(){
+        hi = (hi + 1) % hs.length;
+        hel.textContent = '';
+        var sp = document.createElement('span'); sp.textContent = hs[hi]; hel.appendChild(sp);
+      }, 1800);
+    }
+  }
 
   /* colorful burst from the photo */
   function burst(box){
